@@ -1805,6 +1805,30 @@ transform:scale(1.25);
 }
 }
 
+	.butterfly{
+position:fixed;
+font-size:30px;
+pointer-events:none;
+z-index:99999;
+animation:butterflyFly 8s linear forwards;
+}
+
+@keyframes butterflyFly{
+
+0%{
+left:-50px;
+top:100vh;
+transform:rotate(0deg);
+}
+
+100%{
+left:110vw;
+top:-50px;
+transform:rotate(360deg);
+}
+
+}
+
 </style>
 
 </head>
@@ -2798,6 +2822,9 @@ function finalYes(){
     }
 
 }
+	for(let i=0;i<12;i++){
+    setTimeout(createButterfly,i*500);
+}
 
 // 💕 OPEN YOUR EXISTING GIRLFRIEND PAGE
 
@@ -3583,6 +3610,25 @@ function openGiftAnimation(){
     },2000);
 
 }
+
+	function createButterfly(){
+
+const b=document.createElement("div");
+
+b.className="butterfly";
+
+b.innerHTML="🦋";
+
+b.style.top=Math.random()*window.innerHeight+"px";
+
+document.body.appendChild(b);
+
+setTimeout(()=>{
+b.remove();
+},8000);
+
+}
+	
 
 function showTheEnd(){
 
