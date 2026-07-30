@@ -1805,26 +1805,28 @@ transform:scale(1.25);
 }
 }
 
-	.butterfly{
+.butterfly{
 position:fixed;
-font-size:30px;
+font-size:35px;
 pointer-events:none;
-z-index:99999;
+z-index:999999;
 animation:butterflyFly 8s linear forwards;
 }
 
 @keyframes butterflyFly{
 
 0%{
-left:-50px;
-top:100vh;
-transform:rotate(0deg);
+transform:translateY(0) rotate(0deg);
+opacity:0;
+}
+
+20%{
+opacity:1;
 }
 
 100%{
-left:110vw;
-top:-50px;
-transform:rotate(360deg);
+transform:translateY(-120vh) translateX(200px) rotate(360deg);
+opacity:0;
 }
 
 }
@@ -2822,8 +2824,10 @@ function finalYes(){
     }
 
 }
-	for(let i=0;i<12;i++){
-    setTimeout(createButterfly,i*500);
+	for(let i=0;i<20;i++){
+    setTimeout(()=>{
+        createButterfly();
+    }, i*250);
 }
 
 // 💕 OPEN YOUR EXISTING GIRLFRIEND PAGE
@@ -3611,20 +3615,20 @@ function openGiftAnimation(){
 
 }
 
-	function createButterfly(){
+function createButterfly(){
 
-const b=document.createElement("div");
+const b = document.createElement("div");
 
-b.className="butterfly";
+b.className = "butterfly";
+b.innerHTML = "🦋";
 
-b.innerHTML="🦋";
-
-b.style.top=Math.random()*window.innerHeight+"px";
+b.style.left = Math.random() * window.innerWidth + "px";
+b.style.top = window.innerHeight + "px";
 
 document.body.appendChild(b);
 
 setTimeout(()=>{
-b.remove();
+    b.remove();
 },8000);
 
 }
